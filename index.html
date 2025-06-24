@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="icon" href="/Projects/Currency Converter/image/currency-converter-logo.png">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="container">
+    <form>
+      <div class="inputCont">
+        <p>Enter Amount</p>
+        <input class="input" type="number" value="1" />
+      </div>
+      <div class="mainDiv">
+        <div class="from">
+          <p>From</p>
+          <div class="fromContainer">
+            <img class="flagImg" src="" alt="Image" />
+            <select class="dropdowns" name="from" id="fromDrop"></select>
+          </div>
+        </div>
+        <i id="arrow" class="fa-solid fa-arrow-right-arrow-left tglCurr"></i>
+        <div class="to">
+          <p>To</p>
+          <div class="toContainer">
+            <img class="flagImg" src="" alt="Image" />
+            <select class="dropdowns" name="to" id="toDrop"></select>
+          </div>
+        </div>
+      </div>
+      <div class="result">
+        <p id="resAmount">Lorem ipsum dolor sit!</p>
+      </div>
+      <button id="btn">Get Exchange Rate</button>
+    </form>
+  </div>
+  <script src="first.js"></script>
+</body>
+
+</html>
