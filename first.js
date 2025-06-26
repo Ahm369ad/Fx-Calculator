@@ -7,14 +7,15 @@ const toCurr = document.querySelector("#toDrop");
 const input = document.querySelector(".inputCont input");
 const msg = document.querySelector("#resAmount");
 const tglImg = document.querySelector(".tglCurr");
+const btn = document.querySelector("form #btn");
 
 let country_list;
 
 async function loadCountries() {
   try {
-    const response = await fetch("country_names.json");
+    const response = await fetch("country_info.json");
     const data = await response.json();
-    // console.log(data);
+    console.log("Dataset loaded successfully")
     country_list = data;
   } catch (error) {
     console.error("Error in loading the text file:", error);
@@ -24,18 +25,19 @@ async function loadCountries() {
 async function addDrops() {
   await loadCountries();
   for (let select of dropdowns) {
-    for (let currCode in country_list) {
+    for (let currCode of country_list) {
       let newOption = document.createElement("option");
-      newOption.innerText = currCode;
-      newOption.value = currCode;
-      if(select.name === "from" && currCode === "USD"){
+      newOption.innerText = currCode["Currency Name"]; //Show country Name
+      newOption.value = currCode["Currency Code"]; //For flag img
+      newOption.dataset.flag = currCode["Country Code"]; //Currency code for Exchange rate
+      if (select.name === "from" && currCode["Currency Code"] === "USD") {
         newOption.selected = true;
-      }else if(select.name === "to" && currCode === "PKR") {
+      } else if (select.name === "to" && currCode["Currency Code"] === "PKR") {
         newOption.selected = true;
       }
       select.append(newOption);
     }
-    
+
     select.addEventListener("change", (evt) => {
       updateFlag(evt.target);
     });
@@ -46,31 +48,28 @@ async function addDrops() {
 }
 
 const updateFlag = (element) => {
-  let currCode = element.value;
-  let countryName = country_list[currCode];
-  let newSrc = `https://flagsapi.com/${countryName}/flat/64.png`;
-  let img = element.parentElement.querySelector("img");
-  if(img) {
+  const selectedOption = element.options[element.selectedIndex];
+  const countryCode = selectedOption.dataset.flag || "US"; // fallback to US
+  const newSrc = `https://flagsapi.com/${countryCode}/flat/64.png`;
+
+  const img = element.parentElement.querySelector("img");
+  if (img) {
     img.src = newSrc;
   }
 };
 
-
 const getData = async () => {
-  console.log("Getting data.....");
   const fromCurrency = fromCurr.value.toLowerCase();
-  const url = `${base_url}/${fromCurrency}.json`
+  const url = `${base_url}/${fromCurrency}.json`;
   try {
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
     console.log(data[fromCurrency]);
     return data[fromCurrency];
-
-  } catch(err) {
+  } catch (err) {
     console.log("getData = ", err);
   }
-
 };
 
 btn.addEventListener("click", (evt) => {
@@ -79,18 +78,18 @@ btn.addEventListener("click", (evt) => {
 });
 
 const exchangeAmount = async () => {
-
+  console.log("Loading data...");
   const rates = await getData();
-  console.log("rates", rates);  
+  console.log("rates", rates);
   let inputAmount = await input.value;
   let toCurrency = toCurr.value.toLowerCase();
   console.log(toCurrency, rates[toCurrency]);
 
   let finalAmount = rates[toCurrency] * inputAmount;
   console.log("Final", finalAmount);
-  
+
   msg.innerText = finalAmount;
-}
+};
 
 tglImg.addEventListener("click", () => {
   // console.log("img clicked");
@@ -98,8 +97,6 @@ tglImg.addEventListener("click", () => {
   updateFlag(toCurr);
   updateFlag(fromCurr);
   exchangeAmount();
-  
-  
 });
 
 window.addEventListener("load", async () => {

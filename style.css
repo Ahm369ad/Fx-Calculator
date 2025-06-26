@@ -1,106 +1,118 @@
 * {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
-  background: linear-gradient(to bottom right, #87CEFA, #B0E0E6, #E0FFFF, #D8BFD8, #98FB98);
+  background: linear-gradient(
+    to bottom right,
+    #87cefa,
+    #b0e0e6,
+    #e0ffff,
+    #d8bfd8,
+    #98fb98
+  );
   height: 100vh;
-  margin: 0;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: skyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: skyblue;
 }
 
 .container {
-    height: min-content;
-    width: min-content;
-    border: 2px solid black;
-    padding: 2rem;
-    border-radius: 1rem;
-    background-color: rgba(231, 226, 82, 0.781);
-}
-
-.mainDiv {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1.5rem 0 1.5rem 0;
-    font-size: 1.5rem;
-}
-
-.fromContainer, .toContainer {
-    border: 2px solid black;
-    border-radius: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 8.5rem;
-}
-
-.inputCont p {
-    font-size: 1.5rem;
+  height: min-content;
+  width: max-content;
+  border: 2px solid black;
+  padding: 1rem 0.5rem 1.5rem 0.5rem;
+  border-radius: 1rem;
+  background-color: rgba(231, 226, 82, 0.781);
 }
 
 .input {
-    width: 100%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    border: 2px solid grey;
-    border-radius: 1rem;
-    height: 2.5rem;
-    margin-top: 0.5rem;
-    font-size: 1.5rem;
-    padding-left: 0.7rem;
+  width: max-content;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid grey;
+  border-radius: 1rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  padding-left: 0.7rem;
 }
 
-
-input[type=number]::-webkit-outer-spin-button,
-  input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+.mainDiv {
+  font-size: 1.5rem;
+  margin: 1rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#fromDrop, #toDrop {
-    font-size: 1rem;
-    width: auto;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+.inputCont p {
+  font-size: 1.5rem;
 }
 
-#arrow {
-    margin: 1.8rem 3rem 0 3rem;
-    width: auto;
+.fromContainer,
+.toContainer {
+  border: 2px solid black;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+#fromDrop,
+#toDrop {
+  font-size: 1rem;
+  width: 14.5rem;
+  background-color: transparent;
+  border: none;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
+    no-repeat right 10px center;
+  background-size: 24px;
+  padding-right: 40px; /* space for the arrow */
+  font-size: 18px;
 }
 
 #btn {
-    font-size: 1.5rem;
-    font-weight: 650;
-    width: 100%;
-    height: 3rem;
-    border-radius: 1rem;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    background-color:rgb(233, 83, 46) ;
+  font-size: 1.5rem;
+  font-weight: 650;
+  width: 100%;
+  height: 3rem;
+  border-radius: 1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  background-color: rgb(233, 83, 46);
 }
 
 .result {
-    margin: 1rem 0 1rem 0;
-    font-size: 1.5rem;
-    font-weight: 550;
+  font-size: 1.5rem;
+  font-weight: 550;
 }
 
 .tglCurr {
-    cursor: pointer;
+  width: auto;
+  transform: rotate(90deg);
+  cursor: pointer;
+  margin-top: 1.2rem;
 }
 
 form #btn:hover {
-    border: 2px solid wheat;
-    cursor: pointer;
+  border: 2px solid wheat;
+  cursor: pointer;
 }
